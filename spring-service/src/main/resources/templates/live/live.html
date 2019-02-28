@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header_new :: head">
+    <meta charset="UTF-8"/>
+    <title></title>
+
+
+</head>
+<body>
+<!-- 导航区 -->
+<div th:replace="fragments/header_new :: myheader"></div>
+
+<!--<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">-->
+<!--<script src="http://vjs.zencdn.net/c/video.js"></script>-->
+<script src="/js/video.js"></script>
+<link href="/css/video-js.css" rel="stylesheet">
+<!-- If you'd like to support IE8 -->
+<script src="/js/videojs-ie8.min.js"></script>
+<!--/*@thymesVar id="online_guests" /-->
+<!--/*@thymesVar id="history_guests" */-->
+<div class="container" id="chatroom">
+    <div class="row">
+        <input type="text" style="visibility: hidden" id="id" value="1">
+    </div>
+    <div class="row">
+        <div class="col-md-12" style="margin-bottom: 10px;">
+            <!--标题区域-->
+            <div class="col-md-8" style="height: 80px;padding-left: 0px;background-color: #47d5af;">
+                <div>
+                    <img class="img-responsive" style="width: 80px;height:80px; float: left;"
+                         src="/images/avatar-defualt.jpg" alt="">
+                    <button class="btn btn-default pull-right" style="background-color: #47d5af" onclick="changeSrc()">
+                        我要直播
+                    </button>
+                    <h3 style="margin-left: 15px;margin-top: 10px; float: left;">直播间demo(移动端、电脑端、安卓客户端)</h3>
+                </div>
+            </div>
+            <!--公告区域-->
+            <div class="col-md-4">
+                <h3 class="anchorNotice" style="margin-top: 0px; float: left;"><i class="fa fa-bell"
+                                                                                  aria-hidden="true"></i>主播公告</h3>
+                <div>功能:1.直播推流(rtmp)。2:本页面拉流(电脑端拉取rtmp,手机端拉取hls)。3:聊天室。4:弹幕系统。5.数据统计。</div>
+            </div>
+        </div>
+        <!--
+            作者：979783618@qq.com
+            时间：2017-05-14
+            描述：左侧栏目开始
+        -->
+        <!--controls
+        preload="auto" autoplay="true" data-setup='{}' width="640px" height="439px" controls-->
+        <div class="col-md-8">
+
+            <div>
+                <div class="openFlashTips"
+                     style="width:300px;position:absolute;top:20px;left:225px;z-Index:9999;color:white">
+                    视频无法正常播放，请点击下方启用flash
+                </div>
+                <video id="my-video" style="color:black;width:750px;height:350px" class="video-js" autoplay controls
+                       preload="auto" width="750" height="350" data-setup="{}">
+                    <!--<source src='rtmp://58.200.131.2:1935/livetv/hunantv' type='rtmp/flv'/>-->
+                    <source src='rtmp://192.168.0.105:1935/live/home' type='rtmp/flv'/>
+                </video>
+                <!--<div id="danmu" style=""></div>-->
+                <!--<div class="openFlashTips"-->
+                <!--style="width:300px;position:absolute;top:20px;left:225px;z-Index:9999;color:white">-->
+                <!--视频无法正常播放，请点击下方启用flash-->
+                <!--</div>-->
+                <!--<video id="v-player" autoplay controls preload="auto"-->
+                <!--class="video-js col-center-block">-->
+                <!--&lt;!&ndash;<source src="rtmp://live.hkstv.hk.lxdns.com/live/hks"  type="rtmp/flv"></source>&ndash;&gt;-->
+                <!--</video>-->
+                <embed width="300" height="70" class="openFlash"
+                       style="position:absolute;top:130px;left:225px;z-Index:9999;"
+                       type="application/x-shockwave-flash">
+            </div>
+        </div>
+        <!--
+            作者：979783618@qq.com
+            时间：2017-05-14
+            描述：左侧栏目结束
+        -->
+        <!--
+            作者：979783618@qq.com
+            时间：2017-05-14
+            描述：右侧讨论区开始
+        -->
+        <div class="col-md-4">
+
+
+            <!--tabs-->
+            <ul id="menuTabs" class="nav nav-pills nav-justified">
+                <li class="active">
+                    <a href="#discussion" data-toggle="tab"><i class="fa fa-tree"></i>互动聊天</a>
+                </li>
+                <li>
+                    <a href="#members" data-toggle="tab"><i class="fa fa-tree"></i>现场嘉宾({{number}})</a>
+                </li>
+                <li>
+                    <a href="#guests" data-toggle="tab"><i class="fa fa-tree"></i>最近访问</a>
+                </li>
+            </ul>
+            <!--内容滚动区域开始-->
+            <div id="tabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="discussion" style="padding:10px;">
+                    <!--<div v-for="message in messages">-->
+                    <!--<span style="color: cornflowerblue;">{{message.creator}}:</span>-->
+                    <!--<span>{{message.msgBody}}</span>-->
+                    <!--</div>-->
+                    <div>
+                        <span>assassa</span>
+                        <span>192.0.0.1</span>
+                    </div>
+                </div>
+                <!--内容滚动区域结束-->
+                <!--现场观众统计开始-->
+                <div class="tab-pane fade in" style="padding-top: 10px;" id="members" style="padding:10px;">
+                    <!--<div th:each="user : ${online_guests}">-->
+                    <!--<span style="color: cornflowerblue;" th:text="${user.memberName}"></span>-->
+                    <!--<span th:text="${user.ip}">${user.ip}</span>-->
+                    <!--</div>-->
+                    <div>
+                        <span>assassa</span>
+                        <span>192.0.0.1</span>
+                    </div>
+                </div>
+                <!--现场观众统计结束-->
+                <!--最近访问统计总数-->
+                <div class="tab-pane fade in" style="padding-top: 10px;" id="guests" style="padding:10px;">
+                    <!--<div th:each="guest : ${history_guests}">-->
+                    <!--<span style="color: cornflowerblue;" th:text="${guest.userEntity.randomName}"></span>-->
+                    <!--<span th:text="${guest.userEntity.ip}"></span>-->
+                    <!--<span th:text="${#calendars.format(guest.accessTime,'yyyy-MM-dd mm:ss')}"></span>-->
+
+                    <span style="color: cornflowerblue;" th:text="1"></span>
+                    <span th:text="127.0.0.1"></span>
+                    <span th:text="1992-01-06"></span>
+                    <!--</div>-->
+                </div>
+            </div>
+            <div id="chatinput" class="input-group" style="margin-top: 5px;">
+                <input type="text" class="form-control"
+                       placeholder="参与话题讨论">
+                <span class="input-group-btn">
+				        	<button class="btn btn-success" type="button">发送!</button>
+				      </span>
+            </div>
+        </div>
+        <!--
+            作者：979783618@qq.com
+            时间：2017-05-14
+            描述：右侧讨论区结束
+        -->
+    </div>
+</div>
+<div th:replace="fragments/footer_new :: footer">...</div>
+</body>
+<script>
+    //    var chatroom = new Vue({
+    //        el: '#chatroom',
+    //        data: {
+    //            stompClient: null,
+    //            messages: [],
+    //            messageinput: null,
+    //            rtmpSource: null,
+    //            videoPlayer: null,
+    //            number: 0,
+    //            danmu: null,
+    //            danmuColor: ['#666666', 'blue', 'white', 'red', 'pink']
+    //        },
+    //        methods: {
+    //            videoInit(){
+    //                this.videoPlayer = videojs('v-player', {
+    //                        //初始化数据
+    //                        height: '439px',
+    //                        width: '640px',
+    //                        "techOrder": ["html5", "flash"],
+    //                        controls: true,
+    //                        "autoplay": true,
+    //                        sources: [{
+    //                            /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
+    //                            src: 'rtmp://58.200.131.2:1935/livetv/hunantv',
+    //                            //src: 'rtmp://192.168.1.105:1935/live/home',
+    //                            type: 'rtmp/flv'
+    //                        }]
+    //                    },
+    //                    function () {
+    //                        this.on('loadeddata', function () {
+    //                            console.log(this)
+    //                        })
+    //
+    //                        this.on('pause', function () {
+    //                            //alert('pause')
+    //                        })
+    //                    }
+    //                )
+    //            }
+    //
+    //        },
+    //        mounted: function () {
+    //            //聊天室初始化
+    //            this.connecttosocket()
+    //            //视频初始化
+    //            this.videoInit()
+    //            //弹幕初始化
+    ////            this.danmu = $("#danmu").danmu({
+    ////                right: 0,
+    ////                top: 0,
+    ////                height: 439,  //弹幕区高度
+    ////                zindex: 1,   //弹幕区域z-index属性
+    ////                speed: 7000,      //滚动弹幕的默认速度，这是数值值得是弹幕滚过每672像素所需要的时间（毫秒）
+    ////                sumTime: 65535,   //弹幕流的总时间
+    ////                danmuLoop: true,   //是否循环播放弹幕
+    ////                defaultFontColor: "#FFFFFF",   //弹幕的默认颜色
+    ////                fontSizeSmall: 16,     //小弹幕的字号大小
+    ////                FontSizeBig: 24,       //大弹幕的字号大小
+    ////                opacity: "0.9",			//默认弹幕透明度
+    ////                topBottonDanmuTime: 6000,   // 顶部底部弹幕持续时间（毫秒）
+    ////                SubtitleProtection: false,     //是否字幕保护
+    ////                positionOptimize: false,         //是否位置优化，位置优化是指像AB站那样弹幕主要漂浮于区域上半部分
+    ////                maxCountInScreen: 40,   //屏幕上的最大的显示弹幕数目,弹幕数量过多时,优先加载最新的。
+    ////                maxCountPerSec: 10      //每分秒钟最多的弹幕数目,弹幕数量过多时,优先加载最新的。
+    ////            });
+    ////            $('#danmu').danmu('danmuStart');
+    //        }
+    //    });
+    function changeSrc() {
+        alert("请使用推流软件(OBS等)，推送到rtmp://139.199.82.213/live/home,即可在本直播间看到您的直播内容!")
+        chatroom.videoPlayer.src('rtmp://192.168.0.102:1935/live/home')
+        chatroom.videoPlayer.load('rtmp://192.168.0.102:1935/live/home');
+        chatroom.videoPlayer.play()
+    }
+    function flashChecker() {
+        var hasFlash = 0;         //是否安装了flash
+        var flashVersion = 0; //flash版本
+        var isIE = /*@cc_on!@*/0;      //是否IE浏览器
+
+        if (isIE) {
+            var swf = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+            if (swf) {
+                hasFlash = 1;
+                VSwf = swf.GetVariable("$version");
+                flashVersion = parseInt(VSwf.split(" ")[1].split(",")[0]);
+            }
+        } else {
+            if (navigator.plugins && navigator.plugins.length > 0) {
+                var swf = navigator.plugins["Shockwave Flash"];
+                if (swf) {
+                    hasFlash = 1;
+                    var words = swf.description.split(" ");
+                    for (var i = 0; i < words.length; ++i) {
+                        if (isNaN(parseInt(words[i]))) continue;
+                        flashVersion = parseInt(words[i]);
+                    }
+                }
+            }
+        }
+        return {f: hasFlash, v: flashVersion};
+    }
+
+    var fls = flashChecker();
+    var s = "";
+    if (fls.f) {
+        document.getElementsByClassName("openFlash")[0].style.display = "none";
+        document.getElementsByClassName("openFlashTips")[0].style.display = "none";
+//        document.write("您安装了flash,当前flash版本为: " + fls.v + ".x");
+    }
+    else {
+        document.getElementsByClassName("openFlash")[0].style.display = "block";
+        document.getElementsByClassName("openFlashTips")[0].style.display = "block";
+//        document.write("您没有安装flash");
+    }
+    <!-- websocket的配置 -->
+
+    var path = "localhost:2222/"
+    var ws;//websocket实例
+    var lockReconnect = false;//避免重复连接
+    var wsUrl = getwsurl();
+    var countConnect = 0;
+    createWebSocket(wsUrl);
+    function getwsurl() {
+        //作兼容性连接
+        if ('WebSocket' in window) {
+            return "ws://" + path + "/ws";
+        } else if ('MozWebSocket' in window) {
+            return "ws://" + path + "/ws" + uid;
+        } else {
+            return "http://" + path + "/ws/sockjs" + uid;
+        }
+    }
+
+    function createWebSocket(url) {
+
+        try {
+            ws = new WebSocket(url);
+            initEventHandle();
+        } catch (e) {
+            console.info(e)
+            reconnect(url);
+        }
+    }
+
+    function initEventHandle() {
+        ws.onclose = function () {
+            console.info("连接关闭");
+            // reconnect(wsUrl);
+        };
+        ws.onerror = function () {
+            console.info("传输异常");
+            reconnect(wsUrl);
+        };
+        ws.onopen = function () {
+            // 归结分组
+            messageId = $("#id").val();
+            ws.send("{'id':'" + messageId + "','message':''}");
+            //心跳检测重置
+            heartCheck.reset().start();
+        };
+        ws.onmessage = function (event) {
+            console.info(event.data);
+            //如果获取到消息，心跳检测重置
+            heartCheck.reset().start();
+            // 获取用户发送的信息
+            var data = event.data;
+            if(data.search("HeartBeat") == -1) {
+                var obj = eval('(' + data + ')');
+                var content = "<div><span>"+obj.message+"</span><span>"+obj.message+"</span></div>"
+                $("#discussion").append(content)
+            }
+
+        }
+    }
+
+    function reconnect(url) {
+        if (countConnect < 10) {
+            return;
+        }
+        if (lockReconnect) return;
+        lockReconnect = true;
+        //没连接上会一直重连，设置延迟避免请求过多
+        setTimeout(function () {
+            console.info("尝试重连..." + new Date().format("yyyy-MM-dd hh:mm:ss"));
+            createWebSocket(url);
+            lockReconnect = false;
+        }, 5000);
+        countConnect++;
+    }
+
+
+    //心跳检测,每20s心跳一次
+    var heartCheck = {
+        timeout: 20000,
+        timeoutObj: null,
+        serverTimeoutObj: null,
+        reset: function () {
+            clearTimeout(this.timeoutObj);
+            clearTimeout(this.serverTimeoutObj);
+            return this;
+        },
+        start: function () {
+            var self = this;
+            this.timeoutObj = setTimeout(function () {
+                //这里发送一个心跳，后端收到后，返回一个心跳消息，
+                //onmessage拿到返回的心跳就说明连接正常
+                ws.send("HeartBeat" + new Date().format("yyyy-MM-dd hh:mm:ss"));
+                console.info("客户端发送心跳：" + new Date().format("yyyy-MM-dd hh:mm:ss"));
+                self.serverTimeoutObj = setTimeout(function () {//如果超过一定时间还没重置，说明后端主动断开了
+                    ws.close();//如果onclose会执行reconnect，我们执行ws.close()就行了.如果直接执行reconnect 会触发onclose导致重连两次
+                }, self.timeout)
+            }, this.timeout)
+        }
+    }
+
+    //js中格式化日期，调用的时候直接：new Date().format("yyyy-MM-dd hh:mm:ss")
+    Date.prototype.format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1,                 //月份
+            "d+": this.getDate(),                    //日
+            "h+": this.getHours(),                   //小时
+            "m+": this.getMinutes(),                 //分
+            "s+": this.getSeconds(),                 //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds()             //毫秒
+        };
+        if (/(y+)/.test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            }
+        }
+        return fmt;
+    }
+
+    // 发送信息
+    $("#chatinput span").click(function () {
+        messageChat = $("#chatinput input").val();
+        messageId = $("#id").val();
+        ws.send("{'id':'" + messageId + "','message':'" + messageChat + "'}");
+    })
+
+</script>
+</html>

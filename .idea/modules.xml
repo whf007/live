@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonfacade/commonfacade.iml" filepath="$PROJECT_DIR$/commonfacade/commonfacade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-service-member/facade-member/facade-member.iml" filepath="$PROJECT_DIR$/spring-service-member/facade-member/facade-member.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud/spring-cloud.iml" filepath="$PROJECT_DIR$/spring-cloud/spring-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/spring-cloud项目.iml" filepath="$PROJECT_DIR$/.idea/spring-cloud项目.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-service/spring-service.iml" filepath="$PROJECT_DIR$/spring-service/spring-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-service-member/spring-service-member.iml" filepath="$PROJECT_DIR$/spring-service-member/spring-service-member.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sring-zuul/sring-zuul.iml" filepath="$PROJECT_DIR$/sring-zuul/sring-zuul.iml" />
+    </modules>
+  </component>
+</project>

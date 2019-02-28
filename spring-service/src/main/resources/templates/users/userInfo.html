@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header_new :: head">
+    <meta charset="UTF-8"/>
+    <title></title>
+
+
+</head>
+<body>
+<style>
+    #content {
+        width: 100%;
+    }
+
+    #userInfo {
+        width: 98%;
+    }
+
+    .thumbnail {
+        width: 100%;
+
+    }
+    #playright{
+        border-left-width: 160px;
+        border-color:#fff;
+    }
+    .bg_fff {
+        background-color: #fff;
+    }
+    .xui-wrapper {
+        margin:0 auto;
+        width:240px;
+        max-width:750px;
+        /*height:100vh;*/
+        background-color:#efeff4;
+
+    }
+    .xui-myPromption-wrapper .xui-returnCommission .xui-process {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 28px 0 12px;
+        width: 76%;
+    }
+    .xui-myPromption-wrapper .xui-process .xui-icon-flag {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 12px;
+        height: 18px;
+        background-size: 11px;
+    }
+    .xui-myPromption-wrapper .xui-process .xui-process-static {
+        width: 496px;
+        height: 15px;
+        border-radius: 10px;
+        -webkit-box-shadow: 0 0 5px rgba(0, 198, 255,.6);
+        box-shadow: 0 0 5px rgba(0, 198, 255,.6);
+        background-color: rgba(0, 198, 255,.6);
+        position: relative;
+    }
+    .xui-myPromption-wrapper .xui-process .xui-process-active {
+        position: absolute;
+        top: 28px;
+        left: 255px;
+        width: 45px;
+        height: 14px;
+        border: 1px solid #4dafe2;
+        border-radius: 10px;
+        background-image: linear-gradient(60deg, transparent 0rem, transparent 0.8rem, #4dafe2 0.8rem, #4dafe2 1.6rem, transparent 1.6rem, transparent 2.4rem, #4dafe2 2.4rem);
+        background-color: #008cd5;
+        background-size: 20px 38px;
+        -box-shadow: box-shadow: 1px 1px 5px rgba(0, 140, 213, .8);
+        box-shadow: 1px 1px 5px rgba(0, 140, 213, .8);
+        -webkit-animation: process 800ms infinite linear;
+        animation: process 800ms infinite linear;
+    }
+    .xui-myPromption-wrapper .xui-process .xui-process-active1 {
+        position: absolute;
+        top: 28px;
+        left: 355px;
+        width: 45px;
+        height: 14px;
+        border: 1px solid #4dafe2;
+        border-radius: 10px;
+        background-image: linear-gradient(60deg, transparent 0rem, transparent 0.8rem, #4dafe2 0.8rem, #4dafe2 1.6rem, transparent 1.6rem, transparent 2.4rem, #4dafe2 2.4rem);
+        background-color: #008cd5;
+        background-size: 20px 38px;
+        -box-shadow: box-shadow: 1px 1px 5px rgba(0, 140, 213, .8);
+        box-shadow: 1px 1px 5px rgba(0, 140, 213, .8);
+        -webkit-animation: process 800ms infinite linear;
+        animation: process 800ms infinite linear;
+    }
+    .xui-myPromption-wrapper .xui-process .xui-process-active:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        border-radius: 10px;
+        background-image: linear-gradient(to bottom,rgba(0, 140, 213, .6), rgba(0, 140, 213, .6) 15%, transparent 60%, rgba(0, 140, 213, .6));
+    }
+
+      #triangle {
+          width: 0;
+          height: 0;
+          margin: 0 auto;
+          z-index: 199;
+          border-top: 1rem solid rgb(190, 98, 75);
+          border-left: 1rem solid transparent;
+          border-right: 1rem solid transparent;
+      }
+    #ruler-container {
+        position: relative;
+        overflow: hidden;
+        width: 20rem;
+        height: 5rem;
+        border: 1px solid rgb(147, 184, 47);
+    }
+
+    #ruler ul {
+        transform: translateX(10rem);
+        width: 100rem;
+        height: 4rem;
+        position: relative;
+    }
+
+    #ruler ul li{
+        width: 6.5rem;
+        height: 100%;
+        text-align: right;
+        background: url(./ruler.png) top left no-repeat;
+        background-size: 100px auto;
+        float: left;
+        list-style: none;
+    }
+    html,body {
+        height: 100%;
+        text-align: center;
+    }
+
+    #dirSpan {
+        font-size: 80px;
+        font-weight: 900;
+        color: #4488CD;
+    }
+</style>
+<!-- 导航区 -->
+<div th:replace="fragments/header_new :: myheader"></div>
+
+
+<!--/*@thymesVar id="online_guests" /-->
+<!--/*@thymesVar id="history_guests" */-->
+<div class="container" id="content">
+    <div class="row" id="userInfo">
+        <div class="col-md-4 text-center">
+            <div class="thumbnail">
+                <img src="../../images/c_06.jpg"
+                     alt="通用的占位符缩略图">
+                <div class="caption">
+                    <h3>缩略图标签</h3>
+                    <p>一些示例文本。一些示例文本。</p>
+                    <p >
+                        <a href="#" class="btn btn-primary" role="button" id="playletf">
+                            按钮
+                        </a>
+                        <a href="#" class="btn btn-default" role="button" id="playright">
+                            按钮
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="myconsult">
+                <form  id="searchForm" class="form-inline clearfix" role="form">
+                    <div class="form-group item">
+                        <label for="name">&nbsp;&nbsp;预约对象:</label>
+                        <input type="text" class="form-control" id="searchName" placeholder="请输入预约对象">
+                    </div>
+                    <div class="form-group">
+                        <label for="">&nbsp;&nbsp;预约时间:</label>
+                        <div class="input-group input-medium date-picker input-daterange" data-date-format="yyyy-mm-dd">
+                            <input id="startTime" name="startTime" class="form-control" style="font-size: 13px; width:140px;" type="text" value="" placeholder="开始时间">
+                            <span class="input-group-addon">到</span>
+                            <input id="endTime" name="endTime" class="form-control" style="font-size: 13px; width:140px;" type="text" value="" placeholder="结束时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">&nbsp;&nbsp;状态</label>
+                        <select class="form-control" id="searchStatus">
+                            <option value="">全部</option>
+                            <option value="0">预约成功</option>
+                            <option value="1">预约失败</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button id="searchBtn" type="button" class="btn btn-primary">查询</button>
+                    </div>
+                    <div class="form-group">
+                        <button id="resetBtn" type="button" class="btn btn-primary">重置</button>
+                    </div>
+                </form>
+                <div class="my_folk">
+                    <table id="tb" border="0" cellspacing="0" cellpadding="0" class="table flok_table">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>预约对象</th>
+                            <th>预约时间</th>
+                            <th>预约地点</th>
+                            <th>预约内容</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="triangle"></div>
+<div id="ruler" data-offset="0">
+    <ul id="ruler-ul">
+        <li>
+            <span>10</span>
+        </li>
+        <li>
+            <span>20</span>
+        </li>
+        <li>
+            <span>30</span>
+        </li>
+        //更多的刻度
+    </ul>
+    <span id="dirSpan"></span>
+</div>
+
+</div>
+<div th:replace="fragments/footer_new :: footer">...</div>
+</body>
+<script>
+    $(document).ready(function() {
+        var lastX = 0;
+        $("body").mousemove(function(e) {
+            if (lastX > e.pageX) {
+                $("#dirSpan").text("←");
+            } else if (lastX < e.pageX) {
+                $("#dirSpan").text("→");
+            } else {
+                $("#dirSpan").text("—");
+            }
+            lastX = e.pageX;
+        });
+    });
+    <!-- 刻度尺-->
+    ruler.addEventListener('touchstart', function (event) {
+        //手指按下时的坐标
+        offsetX = event.touches[0].clientX;
+        //初始化第一次滑动的距离为0
+        moveBefore = 0;
+    });
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    //加载日期控件
+    var option = {
+        language : "zh-CN",
+        format : 'yyyy-mm-dd',
+        autoclose : true,// 选中之后自动隐藏日期选择框
+        clearBtn : true// 清除按钮
+    }
+    $('#startTime').datepicker(option);
+    $('#endTime').datepicker(option);
+
+    //加载表格,由于bootstrap的刷新也在这,所以先销毁一下表格在加载表示刷新
+    $("#tb").bootstrapTable('destroy');
+    var userInfo = getCookie('userInfo');
+    var portalUserInfo=new Object();
+    console.info(portalUserInfo)
+    if (userInfo) {
+        //从缓存获取用户信息
+        portalUserInfo =JSON.parse(userInfo);
+    }
+    var userid=portalUserInfo.memberId;
+    var inputSearchName=document.getElementById('searchName');
+    var inputSearchStatus=document.getElementById('searchStatus');
+    var inputEndTime=document.getElementById('endTime');
+    var inputStartTime=document.getElementById('startTime');
+    var name="";
+    var status="";
+    var endTime="";
+    var startTime="";
+
+    if(inputSearchName==null||inputSearchName==""||inputSearchName==undefined){
+        name="";
+    }else{
+        name=document.getElementById('searchName').value;
+    }
+    if(inputSearchStatus==null||inputSearchStatus==""||inputSearchStatus==undefined){
+        status="";
+    }else{
+        status=document.getElementById('searchStatus').value;
+    }
+    if(inputEndTime==null||inputEndTime==""||inputEndTime==undefined){
+        endTime="";
+    }else{
+        endTime=document.getElementById('endTime').value;
+    }
+    if(inputStartTime==null||inputStartTime==""||inputStartTime==undefined){
+        startTime="";
+    }else{
+        startTime=document.getElementById('startTime').value;
+    }
+
+    //正式加载表格
+    $("#tb").bootstrapTable({
+        toggle: "tb",
+        url:  "/course/free",
+        pagination: "true",
+        pageSize: 10,
+        pageList: [10,20],
+        showHeader :true,
+        striped :true,//是否显示行间隔色
+        cache: false,  //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        sidePagination: "server",//表示后台分页(分页方式：client客户端分页，server服务端分页（*）)
+        paginationPreText: "上一页",
+        paginationNextText: "下一页",
+        queryParamsType : "limit",
+        //参数
+        queryParams: function (params) {
+            return {
+                limit:params.limit,
+                offset:params.offset,
+                startTime:startTime,
+                endTime:endTime,
+                userid:userid,
+                name:name,
+                status:status
+            };
+        },
+        columns: [{
+            field: 'number',
+            title: '序号',
+            width: '30',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index+1;
+            }
+        },{
+            field: 'name',
+            title: '老师名称',
+            width: '50',
+            align: 'center'
+        },{
+            field: 'frees',
+            title: '空闲时间',
+            width: '50',
+            align: 'center',
+            formatter: actionFormatter
+        },{
+            field: 'courseName',
+            title: '课程名称',
+            width: '50',
+            align: 'center'
+        },{
+            field: 'courseTime',
+            title: '预约时间',
+            width: '60',
+            align: 'center'
+        },{
+            field: 'orderStatus',
+            title: '状态',
+            width: '30',
+            align: 'center',
+            formatter:function(value, row, index){
+                var status = "未知状态";
+                if (value == "0") {
+                    status="预约成功";
+                }else if(value=="1"){
+                    status="预约失败";
+                }else{
+                    status="未知状态";
+                }
+                return status;
+            }
+        },{
+            field: 'courseId',
+            title: '课程ID',
+            width: '30',
+            align: 'center',
+            visible: false,
+
+        }]
+    });
+
+    //操作栏的格式化
+    function actionFormatter(value, row, index) {
+        var id = value;
+        var result ="<div class=\"xui-wrapper xui-myPromption-wrapper\">\n" +
+            "    <div class=\"xui-mainContain pt10 bg_fff\">\n" +
+            "        <div class=\"xui-returnCommission\">\n" +
+            "            <div class=\"xui-process\">\n" +
+            "                <i id=\"icon-flag\" class=\"xui-icon-flag\"></i>\n" +
+            "                <div class=\"xui-process-static\"></div>\n" +
+            "                <div class=\"xui-process-active\"></div>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "    </div>\n" +
+            "</div>";
+//        result += "<a href='javascript:;' class='btn btn-xs green' onclick=\"EditViewById('" + id + "', view='view')\" title='查看'><span class='glyphicon glyphicon-search'></span></a>";
+//        result += "<a href='javascript:;' class='btn btn-xs blue' onclick=\"EditViewById('" + id + "')\" title='编辑'><span class='glyphicon glyphicon-pencil'></span></a>";
+//        result += "<a href='javascript:;' class='btn btn-xs red' onclick=\"DeleteByIds('" + id + "')\" title='删除'><span class='glyphicon glyphicon-remove'></span></a>";
+
+        return result;
+    }
+    $(".xui-process-active").each(function(){
+        $(this).css("left","340px").css("width","50px");
+    });
+</script>
+</html>

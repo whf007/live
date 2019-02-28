@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="common" />
+        <module name="commonfacade" />
+        <module name="facade-member" />
+        <module name="spring-cloud" />
+        <module name="spring-service" />
+        <module name="spring-service-member" />
+        <module name="sring-zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="common" target="1.5" />
+      <module name="commonfacade" target="1.8" />
+      <module name="facade-member" target="1.8" />
+      <module name="member-facade" target="1.8" />
+      <module name="spring-cloud" target="1.8" />
+      <module name="spring-cloud项目" target="1.8" />
+      <module name="spring-service" target="1.8" />
+      <module name="spring-service-member" target="1.8" />
+      <module name="sring-zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

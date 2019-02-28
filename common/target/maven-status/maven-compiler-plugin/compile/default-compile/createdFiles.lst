@@ -1,0 +1,5 @@
+com\whf\springcloud\common\dao\InsertMapper.class
+com\whf\springcloud\common\dao\SelectMapper.class
+com\whf\springcloud\common\dao\DeleteMapper.class
+com\whf\springcloud\common\dao\CrudMapper.class
+com\whf\springcloud\common\dao\UpdateMapper.class
